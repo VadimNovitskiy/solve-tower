@@ -56,48 +56,19 @@ function getRandomNumber(min, max) {
     }
 }
 
-// async function* generate(array) {
-//     for(let i = 0; i < array.length; i++) {
-//         for(let j = 0; j < array.length - 1 - i; j++, step++) {
-
-//             if(array[j] < array[j + 1]) {
-//                 let tmp = array[j];
-//                 array[j] = array[j + 1];
-//                 array[j + 1] = tmp;
-//                 renderElements(arr1, arr2, arr3);
-//                 await new Promise(resolve => setTimeout(resolve, 700));
-//             }
-//         }
-//         yield i;
-//     }
-// }
-
-// generate(arr1);
-            // console.log('run');
-            // state = 'run';
-            // for await (let iterator of iterators) {
-
-            //     if(iterator === arr1.length - 1) {
-            //         state = 'run';
-            //     }
-            // }
-
-async function sort(array) {
+async function* generateSort(array) {
     for(let i = 0; i < array.length; i++) {
-        for(let j = 0; j < array.length - 1 - i; j++) {
+        for(let j = 0; j < array.length - 1 - i; j++, step++) {
 
             if(array[j] < array[j + 1]) {
                 let tmp = array[j];
                 array[j] = array[j + 1];
                 array[j + 1] = tmp;
-                await new Promise(resolve => setTimeout(resolve, 700));
                 renderElements(arr1, arr2, arr3);
+                await new Promise(resolve => setTimeout(resolve, 700));
             }
         }
-
-        if(i === array.length - 1) {
-            state = 'run';
-        }
+        yield i;
     }
 }
 
@@ -183,7 +154,16 @@ function start() {
             break;
         case 'sort':
             state = 'sorting';
-            sort(arr1);
+            (async () => {
+                let iterators = generateSort(arr1);
+
+                for await (let iterator of iterators) {
+
+                    if(iterator === arr1.length - 1) {
+                        state = 'run';
+                    }
+                }
+            })();
             break;
         case 'run':
             console.log(arr1);
