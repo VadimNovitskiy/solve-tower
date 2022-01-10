@@ -1,0 +1,75 @@
+@import 'nullstyle';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+.wrapper {
+    height: 100%;
+    background: #1f1f1f;
+    font-family: 'Roboto';
+    overflow: hidden;
+}
+.content {
+    width: 1020px;
+    margin: 0 auto;
+}
+.colums {
+    display: flex;
+    font-display: row;
+    justify-content: space-between;
+
+		&__one {
+            background: #5e5d5d;
+            width: 30%;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+		}
+
+		&__two {
+            background: #5e5d5d;
+            width: 30%;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+		}
+
+		&__three {
+            background: #5e5d5d;
+            width: 30%;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+		}
+}
+
+.start-btn {
+    display: block;
+    background: #11f048;
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    margin: 30px auto;
+    &:hover {
+        background: #69e78b;
+    }
+}
+
+.element{
+    background: #11f048;
+    height: 30px;
+    border-radius: 5px;
+    border-bottom: #5e5d5d solid 1px;
+}
+
+.input {
+    display: block;
+    margin: 30px auto;
+    padding: 5px 10px;
+    background: #5e5d5d;
+    color: white;
+}
