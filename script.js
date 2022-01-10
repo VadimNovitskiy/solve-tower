@@ -143,7 +143,7 @@ function start() {
         case 'init':
             let value = Number(input.value);
 
-            if(isNaN(value) || value === 0 || value > 10) {
+            if(isNaN(value) || value > 10 || value <= 0) {
                 alert('Write valid number!');
                 input.value = '';
             } else {
